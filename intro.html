@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<script src="d3.js"></script>
+<script>
+
+d3.select("body").append("span")
+    .text("Hello, world!");
+
+let crimes = { }
+
+d3.csv("crime.csv").then(function(data) {
+  console.log(data[0]["UCR Literal"])
+  for (let i = 0; i < data.length; i++) {
+    if (crimes.hasOwnProperty(data[i]["UCR Literal"])) {
+      crimes[data[i]["UCR Literal"]] = crimes[data[i]["UCR Literal"]] + 1
+    } else {
+      crimes[data[i]["UCR Literal"]] = 1
+    }
+  }
+  console.log(crimes)
+});
+</script>
