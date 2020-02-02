@@ -20,13 +20,13 @@
 let crimes = {}
 
 d3.csv("crime.csv").then(function(data) {
-  for (let i = 0; i < data.length; i++) {
-    if (crimes.hasOwnProperty(data[i]["UCR Literal"])) {
-      crimes[data[i]["UCR Literal"]] = crimes[data[i]["UCR Literal"]] + 1
+  data.forEach(data => {
+    if (crimes.hasOwnProperty(data["UCR Literal"])) {
+      crimes[data["UCR Literal"]]++
     } else {
-      crimes[data[i]["UCR Literal"]] = 1
+      crimes[data["UCR Literal"]] = 1
     }
-  }
+  })
 }).then(function() {
   for (const [key, value] of Object.entries(crimes)) {
     let width = `${value / 200}px`
