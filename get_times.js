@@ -15,7 +15,11 @@ const getTimes = () => {
       }
     })
   }).then(function() {
-    console.log(times)
+    values = []
+    for (const [key, value] of Object.entries(times)) {
+      values.push(value)
+    }
+    generatePieChart(values)
   });
 }
 
